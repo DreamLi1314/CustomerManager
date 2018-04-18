@@ -1,7 +1,7 @@
 package com.dreamli.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class Customer implements Serializable {
 	private int id;

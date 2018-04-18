@@ -9,7 +9,7 @@
 <body>
 	<h1>客户管理系统</h1> <hr>
 	
-	<a href="${pageContext.request.contextPath }/servlet/addCustomer">添加客户</a>
+	<a href="${pageContext.request.contextPath }/jsp/addCustomer.jsp">添加客户</a>
 	
 
 </body>
