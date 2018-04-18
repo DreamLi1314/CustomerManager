@@ -6,14 +6,14 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 public class DaoUtil {
 
-	private static DataSource dataSource = new ComboPooledDataSource();
+	private final static DataSource DATASOURCE = new ComboPooledDataSource();
 	
 	private DaoUtil() {
 	}
 	
 	
 	public static DataSource getDataSource() {
-		return dataSource;
+		return DATASOURCE;
 	}
 	
 }

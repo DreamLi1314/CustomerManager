@@ -1,9 +1,12 @@
 package com.dreamli.factory;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 /**
+ * @param <T>
  * @Description: 基工厂，用于创建 dao 和 service 实例 
  * @Warning: 
  * @Author: dreamli
@@ -14,6 +17,7 @@ import java.util.Properties;
 public class BasicFactory {
 	private static volatile BasicFactory factory;
 	private static Properties properties;
+	private Map<String, Object> beans = new HashMap();
 	
 	static {
 		properties = new Properties();
