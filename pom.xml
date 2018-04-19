@@ -9,37 +9,37 @@
 	<name>Customer Manager</name>
 	<description>Customer Manager</description>
 
-   <properties>
-   	<jdk.version>1.8</jdk.version>
-   	<project.encoding>utf-8</project.encoding>
-   	<tomcat7.port>9090</tomcat7.port>
-   	<tomcat7.path>/CustomerManager</tomcat7.path>
-   </properties>
+	<properties>
+		<jdk.version>1.8</jdk.version>
+		<project.encoding>utf-8</project.encoding>
+		<tomcat7.port>9090</tomcat7.port>
+		<tomcat7.path>/CustomerManager</tomcat7.path>
+	</properties>
 
 	<build>
 		<plugins>
-         <plugin>
-         	<groupId>org.apache.maven.plugins</groupId>
-         	<artifactId>maven-compiler-plugin</artifactId>
-         	<version>3.1</version>
-         	<configuration>
-         		<source>${jdk.version}</source>
-         		<target>${jdk.version}</target>
-         		<encoding>${project.encoding}</encoding>
-         	</configuration>
-         </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>${project.encoding}</encoding>
+				</configuration>
+			</plugin>
 
-         <plugin>
-         	<groupId>org.apache.tomcat.maven</groupId>
-         	<artifactId>tomcat7-maven-plugin</artifactId>
-         	<version>2.1</version>
-         	<configuration>
-                    <port>${tomcat7.port}</port>
-                    <path>${tomcat7.path}</path>
-                    <uriEncoding>${project.encoding}</uriEncoding>
-                    <server>tomcat7</server>
-            </configuration>
-         </plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<port>${tomcat7.port}</port>
+					<path>${tomcat7.path}</path>
+					<uriEncoding>${project.encoding}</uriEncoding>
+					<server>tomcat7</server>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -76,6 +76,17 @@
 			<artifactId>h2</artifactId>
 			<version>1.4.196</version>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
 		</dependency>
 	</dependencies>
 

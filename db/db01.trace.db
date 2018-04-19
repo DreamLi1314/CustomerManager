@@ -3844,3 +3844,6 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/dream
 	at org.h2.mvstore.FileStore.open(FileStore.java:173)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
 	... 23 more
+2018-04-19 23:16:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CUSTOMER[*]"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT, {"; SQL statement:
+CUSTOMER [42001-197]
