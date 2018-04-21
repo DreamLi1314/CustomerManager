@@ -2,15 +2,18 @@ package com.dreamli.dao.impl;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.dreamli.dao.CustomerDao;
 import com.dreamli.domain.Customer;
 import com.dreamli.util.DaoUtil;
+import com.dreamli.web.model.QueryCondition;
 
 /**
  * @Description: 具体的 dao 实现
@@ -91,5 +94,59 @@ public class CustomerDaoImpl implements CustomerDao {
 		String sql = "delete from customer where id=?";
 		QueryRunner runner = new QueryRunner();
 		runner.update(connection, sql, delId);
+	}
+
+	@Override
+	public List<Customer> getCustomersByCondition(QueryCondition condition) {
+		StringBuffer sql = new StringBuffer("select * from customer where 1=1");
+		List<Object> params = new ArrayList<>(5);
+		
+		if(condition.getName() != null && !condition.getName().isEmpty()) {
+			sql.append(" and name like ?");
+			params.add("%" + condition.getName() + "%");
+		}
+		if(condition.getGender() != null && !condition.getGender().isEmpty()) {
+			sql.append(" and gender=?");
+			params.add(condition.getGender());
+		}
+		if(condition.getType() != null && !condition.getType().isEmpty()) {
+			sql.append(" and type=?");
+			params.add(condition.getType());
+		}
+
+		try {
+			QueryRunner runner = new QueryRunner(DaoUtil.getDataSource());
+
+			return runner.query(sql.toString(), new BeanListHandler<Customer>(Customer.class), params.toArray());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public List<Customer> getSubCustomersList(int from, int count) {
+		String sql = "select * from customer limit ?,?";
+		try {
+			QueryRunner runner = new QueryRunner(DaoUtil.getDataSource());
+
+			return runner.query(sql, new BeanListHandler<Customer>(Customer.class), from, count);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public int getCustomerCount() {
+		String sql = "select count(*) from customer";
+		try {
+			QueryRunner runner = new QueryRunner(DaoUtil.getDataSource());
+
+			return ((Long) runner.query(sql, new ScalarHandler())).intValue();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 }

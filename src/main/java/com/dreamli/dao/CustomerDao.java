@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.dreamli.domain.Customer;
+import com.dreamli.web.model.QueryCondition;
 
 public interface CustomerDao {
 
@@ -71,5 +72,38 @@ public interface CustomerDao {
 	 * @throws SQLException 
 	 */
 	void deleteCustomer(Connection connection, String delId) throws SQLException;
+
+	/**
+	 * @Description: 根据指定的条件查询客户集   
+	 * @Warning: 
+	 * @Author: dreamli
+	 * @Date: 2018年4月21日 下午3:21:54
+	 * @Version: 1.0.0
+	 * @param condition
+	 * @return
+	 */
+	List<Customer> getCustomersByCondition(QueryCondition condition);
+
+	/**
+	 * @Description: 从 form 处开始查询, 查询 count 条记录   
+	 * @Warning: 
+	 * @Author: dreamli
+	 * @Date: 2018年4月21日 下午5:11:04
+	 * @Version: 1.0.0
+	 * @param from 开始的行号
+	 * @param count 查询的行数
+	 * @return
+	 */
+	List<Customer> getSubCustomersList(int from, int count);
+
+	/**
+	 * @Description: 查询客户总数   
+	 * @Warning: 
+	 * @Author: dreamli
+	 * @Date: 2018年4月21日 下午5:21:29
+	 * @Version: 1.0.0
+	 * @return
+	 */
+	int getCustomerCount();
 
 }

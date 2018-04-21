@@ -3,6 +3,8 @@ package com.dreamli.service;
 import java.util.List;
 
 import com.dreamli.domain.Customer;
+import com.dreamli.web.model.PageInfo;
+import com.dreamli.web.model.QueryCondition;
 
 public interface CustomerService extends BasicService {
 
@@ -56,5 +58,26 @@ public interface CustomerService extends BasicService {
 	 * @param delIds 待删除客户的ID
 	 */
 	void deleteCustomers(String[] delIds);
+
+	/**
+	 * @Description: 条件查询客户   
+	 * @Warning: 
+	 * @Author: dreamli
+	 * @Date: 2018年4月21日 下午3:18:00
+	 * @Version: 1.0.0
+	 * @param condition
+	 * @return 
+	 */
+	List<Customer> getCustomersByCondition(QueryCondition condition);
+
+	/**
+	 * @Description: 分页查询客户信息   
+	 * @Warning: 
+	 * @Author: dreamli
+	 * @Date: 2018年4月21日 下午4:52:59
+	 * @Version: 1.0.0
+	 * @param page
+	 */
+	void pagingQueryCusts(PageInfo page);
 
 }
